@@ -1,0 +1,12 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "libs/jsoup-1.14.3.jar",
+        "libs/jfreechart-demo-1.5.2-jar-with-dependencies.jar",
+        "libs/poi-ooxml-5.2.0.jar",
+        "libs/poi-5.2.0.jar",
+        "libs/commons-io-2.11.0.jar",
+        "libs/commons-collections4-4.4.jar",
+        "libs/xmlbeans-5.0.3.jar"
+    ]
+}
