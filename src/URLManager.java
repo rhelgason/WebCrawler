@@ -63,6 +63,7 @@ public class URLManager {
                 urlRatio.add(minElapsed, (float)this.visited.size() / numRemaining);
             }
         }
+        this.printStats();
         this.makeCharts(urlSearched, urlRatio);
     }
 
@@ -113,5 +114,10 @@ public class URLManager {
         ratioChart.setVisible(true);
 
         crawler.makeCharts();
+    }
+
+    // print extra information about the crawler
+    private void printStats() {
+        crawler.printStats();
     }
 }

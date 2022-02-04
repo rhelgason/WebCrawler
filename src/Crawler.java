@@ -18,7 +18,7 @@ import org.jsoup.select.Elements;
 
 public class Crawler {
     private static final String USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1";
-    private final List<String> stopList = Arrays.asList("", "i", "the", "a", "an", "as", "at", "by", "he", "his", "me", "she", "her", "or", "us", "who", "and", "to", "be");
+    private final List<String> stopList = Arrays.asList("", "i", "in", "is", "for", "of", "the", "a", "an", "as", "at", "by", "he", "his", "me", "she", "her", "or", "us", "who", "and", "to", "be");
     private Map<String, List<Integer>> invertedIndex = new HashMap<String, List<Integer>>();
     private LineChart termChart;
     private XYSeries termsSearched = new XYSeries("Terms Searched");
@@ -43,6 +43,9 @@ public class Crawler {
             for (String word : bodyText) {
                 // remove links and stop list words
                 word = word.toLowerCase();
+                if (word == null) {
+                    System.out.println("soihadfuis");
+                }
                 if (nextLinks.contains(word) || this.stopList.contains(word)) {
                     continue;
                 }
@@ -99,5 +102,28 @@ public class Crawler {
         this.termChart = new LineChart("WebCrawler Visualization", "Terms Seen over Time", "Elapsed Time (minutes)", "Terms Seen", Arrays.asList(termsSearched));
         termChart.pack();
         termChart.setVisible(true);
+    }
+
+    public void printStats() {
+        // print top words
+        int numTop = 11;
+        System.out.println("\nTop " + numTop + " words appearing in highest numbers of documents: ");
+        Map<String, Integer> wordFreqs = new HashMap<String, Integer>();
+        for (String key : invertedIndex.keySet()) {
+            wordFreqs.put(key, invertedIndex.get(key).size());
+        }
+        // so inefficient but im on a time crunch
+        for (int i = 0; i < numTop; i++) {
+            String topKey = "";
+            int topValue = -1;
+            for (String key : wordFreqs.keySet()) {
+                if (wordFreqs.get(key) > topValue) {
+                    topKey = key;
+                    topValue = wordFreqs.get(key);
+                }
+            }
+            System.out.println("\t" + (i + 1) + ". '" + topKey + "' appeared in " + topValue + " documents.");
+            wordFreqs.put(topKey, 0);
+        }
     }
 }

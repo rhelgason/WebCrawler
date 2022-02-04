@@ -6,13 +6,6 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch Stemmer",
-            "request": "launch",
-            "mainClass": "src.Stemmer",
-            "projectName": "hw1_91111fc9"
-        },
-        {
-            "type": "java",
             "name": "Launch WebCrawler",
             "request": "launch",
             "mainClass": "src.WebCrawler",
