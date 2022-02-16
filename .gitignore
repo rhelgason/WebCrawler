@@ -1,2 +1,3 @@
+*.pdf
 src/*.class
 libs/*.jar
