@@ -1,4 +1,4 @@
-# WebCrawler
+# web-crawler
 A web crawler from scratch using jsoup to get webpage data. The web crawler starts from a few seed URLs and scans the Web in a breadth-first search manner. On each page, the web crawler collects all linked webpages to add them to the queue. All body text on the webpage is also collected to assemble an inverted index for which words appear in which webpages. This data structure would be useful for search querying in future updates.
 
 ## Architecture
